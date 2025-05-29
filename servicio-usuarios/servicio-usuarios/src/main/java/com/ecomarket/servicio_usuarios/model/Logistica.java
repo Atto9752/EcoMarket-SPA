@@ -6,15 +6,15 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "cliente")
+@Table(name = "logistica")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cliente extends Usuario {
+public class Logistica extends Usuario {
 
     @Column(nullable = false)
-    private String direccion;
+    private String zonaAsignada;
 
     @Column(nullable = false)
-    private String comuna;
+    private LocalDate fechaContrato;
 }
