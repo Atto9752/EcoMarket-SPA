@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,21 +45,14 @@ public class ProductoController {
     }
 
 
-    // Actualizar un producto por ID
-    @PostMapping("/{id}")
-    public ResponseEntity<Producto> actualizarProducto(@PathVariable Long id, @RequestBody Producto producto) {
-        Producto productoExistente = productoService.findById(id);
-        if (productoExistente == null) {
-            return ResponseEntity.notFound().build(); // Retorna error 404 si no se encuentra el producto
+    // Crear un nuevo producto
+    @PostMapping("/crear")
+    public ResponseEntity<Producto> crearProducto(@RequestBody Producto producto) {
+        if (producto.getId() != null) {
+            return ResponseEntity.badRequest().build(); // Retorna error 400 si el ID ya está presente
         }
-        producto.setId(id); // Aseguramos que el ID del producto a actualizar sea correcto
-        Producto productoActualizado = productoService.save(producto);
-        return ResponseEntity.ok(productoActualizado);
-    }
-
-    @PostMapping
-    public Producto crearProducto(@RequestBody Producto producto) {
-        return productoService.saveProducto(producto);
+        Producto nuevoProducto = productoService.save(producto);
+        return ResponseEntity.status(201).body(nuevoProducto); // Retorna error 201 al crear un nuevo producto
     }
 
 
