@@ -1,4 +1,4 @@
-package com.ecomarket.servicio_tiendas.Repository;
+package com.ecomarket.servicio_tiendas.repository;
 
 import com.ecomarket.servicio_tiendas.model.Tienda;
 import org.springframework.stereotype.Repository;
