@@ -24,7 +24,7 @@ public class CarritoController {
     // Sintaxis POST:
     //  [
     //      { "productoId": 1, "cantidad": 2 },
-    //      { "productoId": 3, "cantidad": 1 }
+    //      { "productoId": 2, "cantidad": 1 }
     //  ]
 
 }
