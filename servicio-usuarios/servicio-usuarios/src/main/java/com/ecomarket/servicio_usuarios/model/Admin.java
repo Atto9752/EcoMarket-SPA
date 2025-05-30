@@ -9,6 +9,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "administrador")
 @Data
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Admin extends Usuario {

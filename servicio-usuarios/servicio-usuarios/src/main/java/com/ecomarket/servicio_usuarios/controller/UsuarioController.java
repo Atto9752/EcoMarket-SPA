@@ -1,5 +1,14 @@
 package com.ecomarket.servicio_usuarios.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ecomarket.servicio_usuarios.model.Cliente;
+
 @RestController
 @RequestMapping("/api/usuarios")
 public class UsuarioController {
