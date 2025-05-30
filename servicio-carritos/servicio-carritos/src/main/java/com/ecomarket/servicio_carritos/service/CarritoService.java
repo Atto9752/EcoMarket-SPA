@@ -1,6 +1,5 @@
 package com.ecomarket.servicio_carritos.service;
 
-import com.ecomarket.servicio_carritos.client.ProductoFeignClient;
 import com.ecomarket.servicio_carritos.model.*;
 import com.ecomarket.servicio_carritos.repository.CarritoRepository;
 
@@ -16,8 +15,8 @@ public class CarritoService {
     private CarritoRepository carritoRepository;
 
     // Comunicacion con el servicio de productos
-    @Autowired
-    private ProductoFeignClient productoFeignClient;
+     @Autowired
+    private ProductoServiceRest productoServiceRest;
 
     // Crear carrito con items
     public Carrito crearCarrito(List<ItemCarritoRequest> itemsRequest) {
@@ -27,7 +26,7 @@ public class CarritoService {
 
         for (ItemCarritoRequest itemReq : itemsRequest) {
             // Conexion con productos para obtener producto x ID
-            ProductoDto producto = productoFeignClient.buscarProductoPorId(itemReq.getProductoId());
+            ProductoDto producto = productoServiceRest.getProductoById(itemReq.getProductoId());
 
             // Crear item carrito
             ItemCarrito item = new ItemCarrito();
