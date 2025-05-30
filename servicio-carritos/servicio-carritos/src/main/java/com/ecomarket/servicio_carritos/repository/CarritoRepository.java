@@ -1,5 +1,9 @@
 package com.ecomarket.servicio_carritos.repository;
 
-public interface CarritoRepository {
+import com.ecomarket.servicio_carritos.model.Carrito;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+public interface CarritoRepository extends JpaRepository<Carrito, Long> {
 
 }
