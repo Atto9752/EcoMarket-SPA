@@ -28,7 +28,7 @@ public class ProductoService {
         return productoRepository.findById(id).get();
     }
 
-    // Metodo guardar o actualizar producto por id
+    // Metodo crear y guardar (o actualizar) producto por id
     public Producto save(Producto producto) {
         return productoRepository.save(producto);
     }
