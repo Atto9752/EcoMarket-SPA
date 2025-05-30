@@ -8,4 +8,6 @@ import com.ecomarket.servicio_productos.model.Producto;
 @Repository
 public interface ProductoRepository extends JpaRepository<Producto, Long>{
 
+    // No es ncesario agregar metodos aqui, JpaRepository ya se encarga del trabajo CRUD ;)
+
 }

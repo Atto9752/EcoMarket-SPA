@@ -28,8 +28,17 @@ public class ProductoService {
         return productoRepository.findById(id).get();
     }
 
-    // Metodo crear y guardar (o actualizar) producto por id
+    // Metodo crear producto
     public Producto save(Producto producto) {
+        return productoRepository.save(producto);
+    }
+
+    // Metodo actualizar producto
+    public Producto update(Producto producto) {
+        Long id = producto.getId();
+        if (id == null || !productoRepository.existsById(id)) {
+            throw new IllegalArgumentException("ID invalido.");
+        }
         return productoRepository.save(producto);
     }
 
