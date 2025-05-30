@@ -3,12 +3,15 @@ package com.ecomarket.servicio_carritos.service;
 import com.ecomarket.servicio_carritos.model.*;
 import com.ecomarket.servicio_carritos.repository.CarritoRepository;
 
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class CarritoService {
     
     @Autowired
