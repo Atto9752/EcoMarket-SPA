@@ -1,19 +1,31 @@
 package com.ecomarket.servicio_usuarios.model;  
-import jakarta.persistence.MappedSuperclass;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
-@MappedSuperclass
+@Entity
+@Table(name="usuario")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-public abstract class Usuario {
 
-    protected Long idUsuario;
-    protected String nombreUsuario;
-    protected String apellidoUsuario;
-    protected String correoUsuario;
-    protected String contrasenaUsuario;
-    protected String telefonoUsuario;
+public class Usuario {
+    // Atributos
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String nombre;
+
+    @Column(nullable = false)
+    private String apellido;
+
+    @Column(nullable = false)
+    private String correo;
+
+    @Column(nullable = false)
+    private String contrasena;
+
+    @Column(nullable = false)
+    private Integer telefono;
+
 }

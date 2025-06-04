@@ -17,17 +17,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class Producto {
-
-    // Atributos de la entidad Producto para la base de datos
-
+    // Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique=true, nullable = false, length = 100)
+    @Column(unique=true, nullable = false)
     private String nombre;
 
-    @Column(nullable = true, length = 500)
+    @Column(nullable = true)
     private String descripcion;
 
     @Column(nullable = false)
@@ -36,7 +34,7 @@ public class Producto {
     @Column(nullable = false)
     private int stock;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false)
     private String categoria;
     
 }
