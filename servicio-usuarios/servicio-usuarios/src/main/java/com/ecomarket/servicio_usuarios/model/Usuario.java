@@ -13,6 +13,9 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable=false)
+    private String rol = "Cliente";
+
     @Column(nullable = false)
     private String nombre;
 
@@ -27,5 +30,11 @@ public class Usuario {
 
     @Column(nullable = false)
     private Integer telefono;
+
+    @Column(nullable = false)
+    private String direccion;
+
+    @Column(nullable = false)
+    private String comuna;
 
 }
