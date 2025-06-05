@@ -21,10 +21,4 @@ public class CarritoController {
         return ResponseEntity.ok(carrito);
     }
 
-    // Sintaxis POST:
-    //  [
-    //      { "productoId": 1, "cantidad": 2 },
-    //      { "productoId": 2, "cantidad": 1 }
-    //  ]
-
 }

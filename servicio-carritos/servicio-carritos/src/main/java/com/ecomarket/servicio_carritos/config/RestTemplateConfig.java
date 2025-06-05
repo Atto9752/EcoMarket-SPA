@@ -6,7 +6,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class RestTemplateConfig {
-    @Bean
+    @Bean // Sirve para inyectar RestTemplate en otros componentes
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
