@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,7 +35,7 @@ public class UsuarioController {
     }
 
     // Listar usuarios
-    @PostMapping("/listaUsuarios")
+    @GetMapping("/listaUsuarios")
     public ResponseEntity<List<Usuario>> listarUsuarios() {
         List<Usuario> usuarios = usuarioService.findAll();
         if (usuarios.isEmpty()) {
@@ -43,7 +45,7 @@ public class UsuarioController {
     }
 
     // Buscar un usuario por correo
-    @PostMapping("/buscarUsuario/{correo}")
+    @GetMapping("/buscarUsuario/{correo}")
     public ResponseEntity<Usuario> buscarUsuarioPorCorreo(@PathVariable String correo) {
         Usuario usuario = usuarioService.findByCorreo(correo);
         if (usuario == null) {
@@ -53,7 +55,7 @@ public class UsuarioController {
     }
 
     // Eliminar usuario por id
-    @PostMapping("/eliminarUsuario/{id}")
+    @DeleteMapping("/eliminarUsuario/{id}")
     public ResponseEntity<String> eliminarUsuario(@PathVariable Long id) {
         if (usuarioService.findById(id) == null) {  // Verificar que el producto exista
             return ResponseEntity.notFound().build(); // Retorna error si no es asi
