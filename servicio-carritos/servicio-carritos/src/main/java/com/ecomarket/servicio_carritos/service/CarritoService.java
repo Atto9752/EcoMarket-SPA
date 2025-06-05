@@ -6,8 +6,13 @@ import com.ecomarket.servicio_carritos.repository.CarritoRepository;
 import jakarta.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
+import org.springframework.web.client.RestTemplate;
+
 import java.util.List;
 
 @Service
@@ -17,35 +22,38 @@ public class CarritoService {
     @Autowired
     private CarritoRepository carritoRepository;
 
+     @Autowired
+    private RestTemplate restTemplate;
+
     // Comunicacion con el servicio de productos
      @Autowired
     private ProductoServiceRest productoServiceRest;
 
+    private final String productosServiceURL = "http://localhost:8085/api/v3/productos/buscarVariosProductos";
+
     // Crear carrito con items
-    public Carrito crearCarrito(List<ItemCarritoRequest> itemsRequest) {
-        Carrito carrito = new Carrito();
-        List<ItemCarrito> items = new ArrayList<>();
-        double total = 0;
+    public List<ProductoDto> crearCarrito(carritoRequest productosPorId) {
+        //Se conectan los microservicios con RestTemplate, el cual trae los objetos tipo producto y los mete
+        // en un objeto carritoRequest (Dto) llamado "items".
+        // getForObject pide 2 argumentos: la URL del microservicio (en este caro el servicio-productos)
+        // y el tipo de objeto que se espera recibir (en este caso carritoRequest).
+        List<Long> ids = productosPorId.getProductos();
 
-        for (ItemCarritoRequest itemReq : itemsRequest) {
-            // Conexion con productos para obtener producto x ID
-            ProductoDto producto = productoServiceRest.getProductoById(itemReq.getProductoId());
-
-            // Crear item carrito
-            ItemCarrito item = new ItemCarrito();
-            item.setProductoId(String.valueOf(producto.getId()));
-            item.setNombreProducto(producto.getNombre());
-            item.setPrecioUnitario(producto.getPrecio());
-            item.setCantidad(itemReq.getCantidad());
-            item.setCarrito(carrito);
-
-            items.add(item);
-            total += producto.getPrecio() * itemReq.getCantidad();
-        }
-
-        carrito.setItems(items);
-        carrito.setTotal((int) total);
-        return carritoRepository.save(carrito);
+        List<ProductoDto> productos = obtenerProductosPorIds(ids);
+        
+        return productos;
     }
 
+    public List<ProductoDto> obtenerProductosPorIds(List<Long> ids) {
+        HttpEntity<List<Long>> requestEntity = new HttpEntity<>(ids);
+    
+        ResponseEntity<List<ProductoDto>> response = restTemplate.exchange(
+        productosServiceURL,
+        HttpMethod.POST,
+        requestEntity,
+        new ParameterizedTypeReference<List<ProductoDto>>() {} );
+
+        return response.getBody();
+    }
 }
+

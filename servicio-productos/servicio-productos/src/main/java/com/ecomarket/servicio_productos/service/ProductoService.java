@@ -28,6 +28,11 @@ public class ProductoService {
         return productoRepository.findById(id).get();
     }
 
+    // Metodo buscar varios productos por una lista de ids
+    public List<Producto> buscarPorVariasIds(List<Long> ids) {
+        return productoRepository.findAllById(ids);
+    }
+
     // Metodo crear producto
     public Producto save(Producto producto) {
         return productoRepository.save(producto);

@@ -1,5 +1,5 @@
 server:
-  port: 8084
+  port: 8083
 
 spring:
   aplication:
@@ -15,10 +15,10 @@ spring:
     console:
       enabled: true
       path: /h2-console  # Direccion para acceder a la consola de la bd
-                         # Para acceder:  localhost:8084/h2-console
+                         # Para acceder:  localhost:8083/h2-console
                          # Luego se accede en JDBC con la url del datasource, en este caso jdbc:h2:mem:usuariosdb
                          # Importante poner en postman el puerto de la bd de cada microservicio, en este caso
-                         # usuarios tiene el puerto 8084.
+                         # usuarios tiene el puerto 8083.
 
   jpa:
     hibernate:

@@ -16,8 +16,8 @@ public class CarritoController {
 
     // Crear un nuevo carrito con items
     @PostMapping("/crearCarrito")
-    public ResponseEntity<Carrito> crearCarrito(@RequestBody List<ItemCarritoRequest> items) {
-        Carrito carrito = carritoService.crearCarrito(items);
+    public ResponseEntity<List<ProductoDto>> crearCarrito(@RequestBody carritoRequest items) {
+        List<ProductoDto> carrito = carritoService.crearCarrito(items);
         return ResponseEntity.ok(carrito);
     }
 

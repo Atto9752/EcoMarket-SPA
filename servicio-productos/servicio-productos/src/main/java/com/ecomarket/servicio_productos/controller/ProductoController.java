@@ -46,6 +46,12 @@ public class ProductoController {
         return ResponseEntity.ok(producto);
     }
 
+    // Buscar varios productos por una lista de IDs
+    @PostMapping("/buscarVariosProductos")
+    public ResponseEntity<List<Producto>> productosPorId(@RequestBody List<Long> ids){
+        List<Producto> productos = productoService.buscarPorVariasIds(ids);
+        return ResponseEntity.ok(productos);
+    } 
 
     // Crear un nuevo producto
     @PostMapping("/crearProducto")
