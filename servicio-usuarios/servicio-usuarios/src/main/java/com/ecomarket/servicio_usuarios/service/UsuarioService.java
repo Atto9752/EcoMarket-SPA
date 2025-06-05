@@ -41,12 +41,7 @@ public class UsuarioService {
 
     //Metodo eliminar usuario por id
     public void delete(Long id) {
-        if (usuarioRepository.existsById(id)){  // Verifica que el usuario exista por su id
-            usuarioRepository.deleteById(id);  // Elimina el usuario
-        }
-        else {
-            throw new IllegalArgumentException("ID invalido.");
-        }
+        usuarioRepository.deleteById(id);  // Elimina el usuario
     }
 
     // Metodo actualizar usuario por id
