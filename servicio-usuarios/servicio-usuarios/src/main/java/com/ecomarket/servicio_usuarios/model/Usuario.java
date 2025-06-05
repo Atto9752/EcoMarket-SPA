@@ -14,7 +14,7 @@ public class Usuario {
     private Long id;
 
     @Column(nullable=false)
-    private String rol = "Cliente";
+    private String rol;
 
     @Column(nullable = false)
     private String nombre;

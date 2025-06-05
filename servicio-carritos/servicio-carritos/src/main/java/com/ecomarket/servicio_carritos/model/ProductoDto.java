@@ -8,5 +8,4 @@ import lombok.Data;
 public class ProductoDto {
     private String nombre;
     private int precio;
-    private int cantidad;
 }
