@@ -39,26 +39,3 @@ public class Producto {
     
 }
 
-// Ejemplo sintaxis en postman:
-// {
-//   "nombre": "Laptop Dell Inspiron",
-//   "descripcion": "Laptop de 15 pulgadas con 16GB RAM",
-//   "precio": 1200,
-//   "stock": 10,
-//   "categoria": "Electrónica"
-// }
-
-// Ejemplo sintaxis en postman para actualizar:
-// {
-//   "id": 1,       
-//   "nombre": "Laptop Dell Inspiron",
-//   "descripcion": "Laptop de 15 pulgadas con 16GB RAM",
-//   "precio": 1200,
-//   "stock": 10,
-//   "categoria": "Electrónica"
-// }
-
-// Ejemplo manipulación/etc en base a la id:
-// {
-//   "id": 1
-// }

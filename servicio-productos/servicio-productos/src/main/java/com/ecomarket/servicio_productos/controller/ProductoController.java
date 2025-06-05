@@ -17,7 +17,7 @@ import com.ecomarket.servicio_productos.model.Producto;
 import com.ecomarket.servicio_productos.service.ProductoService;
 
 @RestController
-@RequestMapping("/api/v3/productos")
+@RequestMapping("/api/v4/productos")
 
 public class ProductoController {
 

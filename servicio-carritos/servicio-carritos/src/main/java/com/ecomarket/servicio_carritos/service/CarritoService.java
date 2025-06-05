@@ -28,7 +28,7 @@ public class CarritoService {
     private RestTemplate restTemplate;
 
     // Se establece la URL del microservicio productos para ser usada mas abajo en las peticiones HTTP
-    private final String productosServiceURL = "http://localhost:8085/api/v3/productos/buscarVariosProductos";
+    private final String productosServiceURL = "http://localhost:8080/api/v4/productos/buscarVariosProductos";
 
     // Crear carrito con items
     public List<ProductoDto> crearCarrito(carritoRequest productosPorId) {

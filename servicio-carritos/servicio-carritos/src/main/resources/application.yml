@@ -1,5 +1,5 @@
 # server:
-#   port: 8082
+#   port: 8083
 
 # spring:
 #   aplication:
@@ -15,10 +15,10 @@
 #     console:
 #       enabled: true
 #       path: /h2-console  # Direccion para acceder a la consola de la bd
-#                          # Para acceder:  localhost:8082/h2-console
+#                          # Para acceder:  localhost:8083/h2-console
 #                          # Luego se accede en JDBC con la url del datasource, en este caso jdbc:h2:mem:carritosdb
 #                          # Importante poner en postman el puerto de la bd de cada microservicio, en este caso
-#                          # carritos tiene el puerto 8082.
+#                          # carritos tiene el puerto 8083.
 
 #   jpa:
 #     hibernate:
